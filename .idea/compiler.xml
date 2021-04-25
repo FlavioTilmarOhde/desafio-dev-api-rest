@@ -9,8 +9,8 @@
         <module name="desafio" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="desafio" target="11" />
+    <bytecodeTargetLevel target="11">
+      <module name="desafio" target="11.0.11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

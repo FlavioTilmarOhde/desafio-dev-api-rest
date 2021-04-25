@@ -12,7 +12,7 @@
 
     <developers>
         <developer>
-            
+
             <name>Flavio Tilmar Ohde</name>
             <email>flavioohde@gmail.com</email>
         </developer>
@@ -22,12 +22,12 @@
     <artifactId>desafio</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>desafio</name>
-    <description>Demo project for Spring Boot</description>
+    <description>project for Spring Boot</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>11</java.version>
+        <java.version>11.0.11</java.version>
     </properties>
 
     <dependencies>
