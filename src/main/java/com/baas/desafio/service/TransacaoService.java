@@ -8,7 +8,9 @@ import com.baas.desafio.repository.TransacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.baas.desafio.repository.ContaRepository;
 import com.baas.desafio.exception.TransacaoException;
+import org.springframework.stereotype.Service;
 
+@Service
 public class TransacaoService {
 
     @Autowired
