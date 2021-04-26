@@ -1,0 +1,181 @@
+{
+	"info": {
+		"_postman_id": "06e889e7-ba2d-4192-84a2-ec20d7f5e3c4",
+		"name": "desafio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Home",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						""
+					]
+				},
+				"description": "Para checar se Aplicação esta UP"
+			},
+			"response": []
+		},
+		{
+			"name": "Cria Conta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"idConta\": 1,\n \"pessoa\": {\"idPessoa\": 1,        \n            \"nome\": \"Flavio\",        \n            \"cpf\": \"79199984920\",        \n            \"dataNascimento\": \"25/04/2020\" },\n\"saldo\": 0.00,\n\"limiteSaqueDiario\": 1000.00,\n\"flagAtivo\": true,\n\"tipoConta\": 1,\n\"dataCriacao\": \"25/04/2020\"}\n\t\t\t\t\t",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/conta",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"conta"
+					]
+				},
+				"description": "Criação de conta e pessoa"
+			},
+			"response": []
+		},
+		{
+			"name": "Deposito",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \n     \"idTransacao\":  1,    \n     \"conta\": { \"idConta\": 1,        \n                \"pessoa\": {\"idPessoa\": 1,        \n                        \"nome\": \"Flavio\",        \n                        \"cpf\": \"79199984920\",        \n                        \"dataNascimento\": \"25/04/2020\" },       \n                \"saldo\": 0.00,        \n                \"limiteSaqueDiario\": 1000.00,        \n                \"flagAtivo\": true,        \n                \"tipoConta\": 1,        \n                \"dataCriacao\": \"25/04/2020\"    },    \n    \"valor\": 50.00,    \n    \"dataTransacao\": \"25/04/2020\"}\n\t\t\t\t\t",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/transacao/deposito",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacao",
+						"deposito"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consulta de Saldo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/conta/1/saldo",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"conta",
+						"1",
+						"saldo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Saque",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \n     \"idTransacao\":  1,    \n \"conta\": { \"idConta\": 1,        \n                \"pessoa\": {\"idPessoa\": 1,        \n                        \"nome\": \"Flavio\",        \n                        \"cpf\": \"79199984920\",        \n                        \"dataNascimento\": \"25/04/2020\" },       \n                \"saldo\": 0.00,        \n                \"limiteSaqueDiario\": 1000.00,        \n                \"flagAtivo\": true,        \n                \"tipoConta\": 1,        \n                \"dataCriacao\": \"25/04/2020\"    },\n    \"valor\": -5.00,    \n    \"dataTransacao\": \"25/04/2020\"}\n\t\t\t\t\t",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/transacao/saque",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacao",
+						"saque"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Bloqueia Conta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/conta/1/bloqueia",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"conta",
+						"1",
+						"bloqueia"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Extrato por conta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transacao/extrato/10",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transacao",
+						"extrato",
+						"10"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
