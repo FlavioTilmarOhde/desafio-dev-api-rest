@@ -10,6 +10,20 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 
+    @ExceptionHandler(TransacaoException.class)
+    protected ResponseEntity<Object> handleException (TransacaoException ex, WebRequest request) {
+        ResponseHandler response = new ResponseHandler("TransacaoException", "Erro ao gravar transação.");
+
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(ContaNaoEncontradaException.class)
+    protected ResponseEntity<Object> handleException (ContaNaoEncontradaException ex, WebRequest request) {
+        ResponseHandler response = new ResponseHandler("ContaNaoEncontradaException", "Conta não existente.");
+
+        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(ContaJaExisteException.class)
     protected ResponseEntity<Object> handleException (ContaJaExisteException ex, WebRequest request) {
         ResponseHandler response = new ResponseHandler("ContaJaExisteException", "Conta já existente.");

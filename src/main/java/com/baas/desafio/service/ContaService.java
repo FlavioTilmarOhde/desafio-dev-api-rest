@@ -7,6 +7,8 @@ import com.baas.desafio.repository.ContaRepository;
 import com.baas.desafio.repository.TransacaoRepository;
 import com.baas.desafio.exception.ContaBloqueadaException;
 import com.baas.desafio.exception.ContaSemSaldoException;
+import com.baas.desafio.exception.ContaJaExisteException;
+import com.baas.desafio.exception.ContaNaoEncontradaException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,20 +26,40 @@ public class ContaService {
 
         Optional<Conta> conta = contaRepository.findById(idConta);
 
+        if (conta.isEmpty())
+                throw new ContaNaoEncontradaException();
+
         return conta.get();
+    }
+
+    public Double getSaldo(long idConta){
+
+       return getConta(idConta).getSaldo();
 
     }
 
-    public Conta bloqueioConta(Conta conta) {
+    public Conta createConta(Conta conta) {
 
-        conta.setFlagAtivo(false);
+        if (contaRepository.findById(conta.getIdConta()).isPresent()) {
+            throw new ContaJaExisteException();
+        }
 
         return contaRepository.save(conta);
+    }
+
+    public Boolean bloqueiaConta(long idConta) {
+
+        Conta _conta = getConta(idConta);
+        _conta.setFlagAtivo(false);
+        contaRepository.save(_conta);
+
+        return true;
 
     }
 
-    public void verificaContaAtiva(Conta conta) {
-        if(!conta.isFlagAtivo()) {
+    public void verificaContaAtiva(Conta _conta) {
+
+        if(!_conta.isFlagAtivo()) {
             throw new ContaBloqueadaException();
         }
     }
