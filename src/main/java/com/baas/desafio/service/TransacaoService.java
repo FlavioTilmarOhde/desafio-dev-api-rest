@@ -84,8 +84,9 @@ public class TransacaoService {
         Conta _conta = contaService.getConta(idConta);
 
         // Obtem lista de transações de forma opcional caso não exista transações
-        Optional<List<Transacao>> transacao = transacaoRepository.findByConta(_conta);
+        Optional<List<Transacao>> transacaoList = transacaoRepository.findByConta(_conta);
+                //.findByConta(_conta);
 
-        return transacao.get();
+        return transacaoList.get();
     }
 }

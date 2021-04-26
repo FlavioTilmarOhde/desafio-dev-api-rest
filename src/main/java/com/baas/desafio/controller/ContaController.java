@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,7 +16,6 @@ import com.baas.desafio.service.ContaService;
 
 @RestController
 @RequestMapping("/conta")
-
 public class ContaController {
 
     @Autowired
@@ -28,12 +27,12 @@ public class ContaController {
     }
 
     @GetMapping("/{idConta}/saldo")
-    public ResponseEntity<Double> getSaldo(@PathVariable("idConta") long idConta) {
+    public ResponseEntity<Conta> getSaldo(@PathVariable("idConta") long idConta) {
 
        return new ResponseEntity<>(contaService.getSaldo(idConta), HttpStatus.OK);
     }
 
-    @PatchMapping("/{idConta}/bloqueia")
+    @PutMapping("/{idConta}/bloqueia")
     public ResponseEntity<Boolean> bloqueiaConta(@PathVariable("idConta") long idConta) {
 
        return new ResponseEntity<>(contaService.bloqueiaConta(idConta), HttpStatus.CREATED);

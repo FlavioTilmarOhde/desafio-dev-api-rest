@@ -32,9 +32,9 @@ public class ContaService {
         return conta.get();
     }
 
-    public Double getSaldo(long idConta){
+    public Conta getSaldo(long idConta){
 
-       return getConta(idConta).getSaldo();
+       return getConta(idConta);
 
     }
 
